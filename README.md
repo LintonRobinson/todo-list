@@ -14,9 +14,9 @@
 ![Gif of Project](#)
 
 ## Description
-This is my first ever webpage created as part of [TheOdinProject](https://www.theodinproject.com) curriculum. 
+This is a todo list application created as part of [TheOdinProject](https://www.theodinproject.com) curriculum.
 
-[Click Here](#) - To see  the assignment details.
+[Click Here](https://www.theodinproject.com/lessons/node-path-javascript-todo-list) - To see  the assignment details.
 
 ## Built Using
 - HTML5
