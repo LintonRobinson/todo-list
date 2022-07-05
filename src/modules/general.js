@@ -19,10 +19,11 @@ const buildPage = () => {
     desc.innerText = 'A general list of random todos.';
     todoContainer.append(todoContent());
     btn.innerText = '+';
+    // btn.addEventListener('click', );
 
     mainContainer.append(title, desc, todoContainer, btn);
 
-    return mainContainer
+    return mainContainer;
 }
 
 export {
