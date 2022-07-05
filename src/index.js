@@ -1,10 +1,8 @@
 import { todos } from './modules/todos.js';
-import { createTodoCard } from './modules/create-dom-elements.js';
+import { buildPage } from './modules/general.js';
 
-const todoContainer = document.querySelector('.todo-container');
+const main = document.querySelector('.main');
 
-const newTodo = createTodoCard(todos[0]);
-
-todoContainer.append(newTodo);
+main.append(buildPage());
 
 console.log(todos[0]);
