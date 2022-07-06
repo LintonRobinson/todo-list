@@ -1,5 +1,6 @@
 import { createBtn, createDiv, createH2, createPara } from './create-dom-elements';
 import { createTodoCard } from './create-dom-elements.js';
+import { openModal } from './modal';
 import { todos } from './todos.js';
 
 const todoContent = () => {
@@ -19,7 +20,7 @@ const buildPage = () => {
     desc.innerText = 'A general list of random todos.';
     todoContainer.append(todoContent());
     btn.innerText = '+';
-    // btn.addEventListener('click', );
+    btn.addEventListener('click', () => openModal());
 
     mainContainer.append(title, desc, todoContainer, btn);
 
