@@ -48,6 +48,10 @@ const createTodoCard = (todo) => {
     return container;
 }
 
+const createModal = () => {
+    const container = createDiv('todo-modal');
+}
+
 export {
     createDiv,
     createH2,

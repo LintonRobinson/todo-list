@@ -1,9 +1,19 @@
-const todos = [{
-    type: 'general',
-    checked: false,
-    title: 'Todo-Title',
-    date: 'dd-mm-year',
-}];
+import { createTodoCard } from "./create-dom-elements";
+
+const todos = [
+    {
+        type: 'general',
+        checked: false,
+        title: 'Todo-Title',
+        date: 'dd-mm-year',
+    },
+    {
+        type: 'general',
+        checked: false,
+        title: 'Todo-Title2',
+        date: 'dd-mm-year',
+    }
+];
 
  const  todoFactory = (title, date) => {
     const type = 'general';
@@ -14,7 +24,13 @@ const todos = [{
  const createTodo = (title, date) => {
     const newTodo = todoFactory(title, date);
     todos.push(newTodo);
-    console.log(todos);
+    renderTodos();
  };
+
+ const renderTodos = () => {
+    const todoContainer = document.querySelector('.todo-container');
+    todoContainer.textContent = '';
+    todos.forEach(todo => todoContainer.append(createTodoCard(todo)));
+ }
 
 export { todos, createTodo };
