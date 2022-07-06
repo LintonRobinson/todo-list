@@ -1,3 +1,5 @@
+import { removeTodo } from "./todos";
+
 const createDiv = (className) => {
     const div = document.createElement('div');
     div.classList.add(className);
@@ -29,7 +31,7 @@ const createInput = (className, inputType) => {
     return input;
 }
 
-const createTodoCard = (todo) => {
+const createTodoCard = (todo, index) => {
     const container = createDiv('todo-card');
     const checkbox = createInput('todo-card-input', 'checkbox');
     const title = createPara('todo-card-title');
@@ -42,6 +44,7 @@ const createTodoCard = (todo) => {
     date.innerText = todo.date;
     editBtn.innerText = 'Edit';
     deleteBtn.innerText = 'X';
+    deleteBtn.addEventListener('click', () => removeTodo(index));
 
     container.append(checkbox, title, date, editBtn, deleteBtn);
     
