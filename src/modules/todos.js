@@ -12,7 +12,13 @@ const todos = [
         checked: false,
         title: 'Todo-Title2',
         date: 'dd-mm-year',
-    }
+    },
+    {
+      type: 'general',
+      checked: false,
+      title: 'Todo-Title3',
+      date: 'dd-mm-year',
+  }
 ];
 
  const  todoFactory = (title, date) => {
@@ -32,10 +38,16 @@ const todos = [
     renderTodos();
  }
 
+ const editTodo = (index, title, date) => {
+   const newTodo = todoFactory(title, date);
+   todos.splice(index, 1, newTodo);
+   renderTodos();
+ }
+
  const renderTodos = () => {
     const todoContainer = document.querySelector('.todo-container');
     todoContainer.textContent = '';
     todos.forEach((todo, index) => todoContainer.append(createTodoCard(todo, index)));
  }
 
-export { todos, createTodo, removeTodo };
+export { todos, createTodo, removeTodo, editTodo };
