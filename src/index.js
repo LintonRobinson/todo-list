@@ -5,4 +5,10 @@ const main = document.querySelector('.main');
 
 main.append(buildPage());
 
-console.log(todos[0]);
+const test = todos.filter(checkType)
+
+function checkType(todo) {
+    return todo.type === 'random';
+}
+
+console.log(test);
