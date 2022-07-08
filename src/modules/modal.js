@@ -17,6 +17,7 @@ closeModal.addEventListener('click', () => {
 
 
 const clearModal = () => {
+    modalTitle.innerText = 'Add new todo';
     titleInput.value = '';
     dateInput.value = '';
 }
