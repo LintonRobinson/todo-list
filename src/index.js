@@ -1,5 +1,5 @@
 import { todos } from './modules/todos.js';
-import { buildPage } from './modules/general.js';
+import { buildGeneral } from './modules/build-pages.js';
 import { openProjectModal } from './modules/modal.js';
 import { renderProjectNav } from './modules/projects.js';
 
@@ -12,10 +12,9 @@ navBtn.addEventListener('click', () => {
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        console.log(link.innerText)
         switch (link.innerText) {
             case 'General':
-                buildPage();
+                buildGeneral();
                 break;
             case 'Today':
                 break;

@@ -1,3 +1,4 @@
+import { buildProjectPage } from "./build-pages";
 import { createNavItem } from "./create-dom-elements";
 
 const projects = [
@@ -22,7 +23,6 @@ const projectFactory = (title, desc) => {
 const createProject = (title, desc) => {
     const newProject = projectFactory(title, desc);
     projects.push(newProject);
-    console.log(projects);
     renderProjectNav();
 };
 
@@ -32,10 +32,11 @@ const removeProject = (index) => {
 
 const renderProjectNav = () => {
     const projectNav = document.querySelector('#projects-list');
-
     projectNav.textContent = '';
+
     projects.forEach(project => {
         const navItem = createNavItem('.header-nav-item', project.title);
+        navItem.addEventListener('click', () => buildProjectPage(project));
         projectNav.append(navItem);
     })
 }

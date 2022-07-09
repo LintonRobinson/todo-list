@@ -45,7 +45,8 @@ const createNavItem = (className, projectName) => {
     return li;
 }
 
-const createTodoCard = (todo, index) => {
+const createTodoCard = (todo) => {
+    const todoContainer = document.querySelector('.todo-container');
     const container = createDiv('todo-card');
     const checkbox = createCheckbox('todo-card-input');
     const title = createPara('todo-card-title');
@@ -54,17 +55,17 @@ const createTodoCard = (todo, index) => {
     const deleteBtn = createBtn('todo-card-delete');
 
     checkbox.checked = todo.checked;
-    checkbox.addEventListener('click', () => updateStatus(index, checkbox.checked));
+    checkbox.addEventListener('click', () => updateStatus(todo.index, checkbox.checked));
     title.innerText = todo.title;
     date.innerText = todo.date;
     editBtn.innerText = 'Edit';
-    editBtn.addEventListener('click', () => openEditModal(todo, index));
+    editBtn.addEventListener('click', () => openEditModal(todo));
     deleteBtn.innerText = 'X';
-    deleteBtn.addEventListener('click', () => removeTodo(index));
+    deleteBtn.addEventListener('click', () => removeTodo(todo.index));
 
     container.append(checkbox, title, date, editBtn, deleteBtn);
 
-    return container;
+    todoContainer.append(container);
 };
 
 const createLegend = (className) => {
