@@ -27,13 +27,3 @@ navLinks.forEach(link => {
 });
 
 renderProjectNav()
-
-
-
-const test = todos.filter(checkType)
-
-function checkType(todo) {
-    return todo.type === 'random';
-}
-
-console.log(test);
