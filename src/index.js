@@ -30,8 +30,6 @@ renderProjectNav()
 
 
 
-
-
 const test = todos.filter(checkType)
 
 function checkType(todo) {
