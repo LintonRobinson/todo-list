@@ -1,5 +1,5 @@
-import { todos } from './modules/todos.js';
-import { buildGeneral } from './modules/build-pages.js';
+import { format } from 'date-fns'
+import { buildGeneral, buildToday, buildUpcoming } from './modules/build-pages.js';
 import { openProjectModal } from './modules/modal.js';
 import { renderProjectNav } from './modules/projects.js';
 
@@ -17,8 +17,10 @@ navLinks.forEach(link => {
                 buildGeneral();
                 break;
             case 'Today':
+                buildToday();
                 break;
             case 'Upcoming':
+                buildUpcoming();
                 break;
             case 'Trash':
                 break;
