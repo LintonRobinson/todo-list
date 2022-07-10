@@ -4,8 +4,7 @@ import { removeProject, renderTrashProjects } from './projects';
 import { renderTodos } from './todos';
 
 const buildGeneral = () => {
-    const main = document.querySelector('.main');
-    const mainContainer = createDiv('main-container');
+    const mainContainer = document.querySelector('.main-container');
     const title = createH2('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
@@ -17,16 +16,14 @@ const buildGeneral = () => {
     createTodoBtn.innerText = '+';
     createTodoBtn.addEventListener('click', () => openModal());
 
+    mainContainer.textContent = '';
     mainContainer.append(title, desc, todoContainer, createTodoBtn);
 
-    main.textContent = '';
-    main.append(mainContainer);
     renderTodos();
 }
 
 const buildToday = () => {
-    const main = document.querySelector('.main');
-    const mainContainer = createDiv('main-container');
+    const mainContainer = document.querySelector('.main-container');
     const title = createH2('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
@@ -34,16 +31,14 @@ const buildToday = () => {
     title.innerText = 'Today';
     desc.innerText = 'All todos dated today';
 
+    mainContainer.textContent = '';
     mainContainer.append(title, desc, todoContainer);
 
-    main.textContent = '';
-    main.append(mainContainer);
     renderTodos();
 }
 
 const buildUpcoming = () => {
-    const main = document.querySelector('.main');
-    const mainContainer = createDiv('main-container');
+    const mainContainer = document.querySelector('.main-container');
     const title = createH2('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
@@ -51,16 +46,14 @@ const buildUpcoming = () => {
     title.innerText = 'Upcoming';
     desc.innerText = 'All upcoming todos in the next week';
 
+    mainContainer.textContent = '';
     mainContainer.append(title, desc, todoContainer);
 
-    main.textContent = '';
-    main.append(mainContainer);
     renderTodos();
 }
 
 const buildTrash = () => {
-    const main = document.querySelector('.main');
-    const mainContainer = createDiv('main-container');
+    const mainContainer = document.querySelector('.main-container');
     const title = createH2('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
@@ -71,17 +64,15 @@ const buildTrash = () => {
     desc.innerText = 'All deleted todos and projects';
     projectContainer.innerText = 'Test';
 
+    mainContainer.textContent = '';
     mainContainer.append(title, desc, todoContainer, projectContainer);
 
-    main.textContent = '';
-    main.append(mainContainer);
     renderTodos();
     renderTrashProjects();
 }
 
 const buildProjectPage = (project, index) => {
-    const main = document.querySelector('.main');
-    const mainContainer = createDiv('main-container');
+    const mainContainer = document.querySelector('.main-container');
     const title = createH2('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
@@ -96,10 +87,9 @@ const buildProjectPage = (project, index) => {
     delProjectBtn.innerText = 'X';
     delProjectBtn.addEventListener('click', () => removeProject(project, index));
 
+    mainContainer.textContent = '';
     mainContainer.append(title, desc, todoContainer, createTodoBtn, delProjectBtn);
 
-    main.textContent = '';
-    main.append(mainContainer);
     renderTodos();
 }
 

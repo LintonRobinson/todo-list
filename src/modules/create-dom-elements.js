@@ -9,6 +9,12 @@ const createDiv = (className) => {
     return div;
 };
 
+const createH1 = (className) => {
+    const h1 = document.createElement('h1');
+    h1.classList.add(className);
+    return h1;
+};
+
 const createH2 = (className) => {
     const h2 = document.createElement('h2');
     h2.classList.add(className);
@@ -46,6 +52,10 @@ const createNavItem = (className, projectName) => {
     li.append(liLink);
 
     return li;
+}
+
+const createHeader = () => {
+    const navBtn = createBtn();
 }
 
 const createTodoCard = (todo) => {
