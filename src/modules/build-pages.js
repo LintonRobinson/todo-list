@@ -1,6 +1,6 @@
 import { createBtn, createDiv, createH2, createPara, createTodoCard } from './create-dom-elements';
 import { openModal } from './modal';
-import { renderTodos, todos } from './todos';
+import { renderTodos } from './todos';
 
 const buildGeneral = () => {
     const main = document.querySelector('.main');
@@ -56,6 +56,23 @@ const buildUpcoming = () => {
     renderTodos();
 }
 
+const buildTrash = () => {
+    const main = document.querySelector('.main');
+    const mainContainer = createDiv('main-container');
+    const title = createH2('project-title');
+    const desc = createPara('project-desc');
+    const todoContainer = createDiv('todo-container');
+
+    title.innerText = 'Trash';
+    desc.innerText = 'All deleted todos';
+
+    mainContainer.append(title, desc, todoContainer);
+
+    main.textContent = '';
+    main.append(mainContainer);
+    renderTodos();
+}
+
 const buildProjectPage = (project) => {
     const main = document.querySelector('.main');
     const mainContainer = createDiv('main-container');
@@ -80,5 +97,6 @@ export {
     buildGeneral,
     buildToday,
     buildUpcoming,
+    buildTrash,
     buildProjectPage,
 }

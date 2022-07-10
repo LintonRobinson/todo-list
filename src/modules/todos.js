@@ -7,41 +7,47 @@ const todos = [
         checked: false,
         title: 'Todo-Title',
         date: '2022-07-20',
+        isTrash: false,
     },
     {
         type: 'General',
         checked: false,
         title: 'Todo-Title2',
         date: '2022-07-21',
+        isTrash: false,
     },
     {
         type: 'Project-Title',
         checked: false,
         title: 'Todo-Title3',
         date: '2022-07-22',
+        isTrash: false,
     },
     {
         type: 'General',
         checked: false,
         title: 'Todo-Title4',
         date: '2022-07-22',
+        isTrash: false,
+    },
+    {
+        type: 'General',
+        checked: false,
+        title: 'Trash-Todo',
+        date: '2022-07-22',
+        isTrash: true,
     },
 ];
 
 const todoFactory = (type, title, date) => {
     const checked = false;
-    return { type, checked, title, date };
+    const isTrash = false;
+    return { type, isTrash, checked, title, date };
 };
 
 const createTodo = (type, title, date) => {
     const newTodo = todoFactory(type, title, date);
     todos.push(newTodo);
-    renderTodos();
-};
-
-const removeTodo = (index) => {
-    todos.splice(index, 1);
-    console.log(todos)
     renderTodos();
 };
 
@@ -58,6 +64,18 @@ const updateStatus = (index, value) => {
     console.log(todos)
 };
 
+const removeTodo = (todo) => {
+    if (todo.isTrash) {
+        todos.splice(todo.index, 1);
+        console.log(todos)
+        renderTodos();
+    } else {
+        todos[todo.index].isTrash = true;
+        console.log(todos);
+        renderTodos();
+    }
+};
+
 const renderTodos = () => {
     const currentPage = document.querySelector('.project-title');
     const todoContainer = document.querySelector('.todo-container');
@@ -70,7 +88,7 @@ const filterTodos = (currentPage) => {
     if (currentPage === 'Today') {
         const filteredTodos = todos.filter((todo, index) => {
             todo.index = index;
-            return todo.date === format(new Date(), 'yyyy-MM-dd');
+            return todo.date === format(new Date(), 'yyyy-MM-dd') && todo.isTrash === false;
         });
         return filteredTodos;
     } else if (currentPage === 'Upcoming') {
@@ -83,13 +101,23 @@ const filterTodos = (currentPage) => {
 
         const filteredTodos = todos.filter((todo, index) => {
             todo.index = index;
-            return dates.includes(todo.date);
+            return dates.includes(todo.date) && todo.isTrash === false;
+        });
+        return filteredTodos;
+    } else if (currentPage === 'Trash') {
+        const filteredTodos = todos.filter((todo, index) => {
+            todo.index = index;
+            return todo.isTrash === true;
+        });
+
+        filteredTodos.sort((a, b) => {
+            return compareAsc(new Date(a.date), new Date(b.date));
         });
         return filteredTodos;
     } else {
         const filteredTodos = todos.filter((todo, index) => {
             todo.index = index;
-            return todo.type === currentPage;
+            return todo.type === currentPage && todo.isTrash === false;
         });
 
         filteredTodos.sort((a, b) => {

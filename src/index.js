@@ -1,5 +1,4 @@
-import { format } from 'date-fns'
-import { buildGeneral, buildToday, buildUpcoming } from './modules/build-pages.js';
+import { buildGeneral, buildToday, buildTrash, buildUpcoming } from './modules/build-pages.js';
 import { openProjectModal } from './modules/modal.js';
 import { renderProjectNav } from './modules/projects.js';
 
@@ -23,6 +22,7 @@ navLinks.forEach(link => {
                 buildUpcoming();
                 break;
             case 'Trash':
+                buildTrash();
                 break;
         };
     });
