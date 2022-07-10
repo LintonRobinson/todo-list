@@ -29,3 +29,4 @@ navLinks.forEach(link => {
 });
 
 renderProjectNav()
+buildGeneral();

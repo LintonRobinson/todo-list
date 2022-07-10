@@ -42,7 +42,7 @@ const todos = [
 const todoFactory = (type, title, date) => {
     const checked = false;
     const isTrash = false;
-    return { type, isTrash, checked, title, date };
+    return { type, checked, title, date, isTrash };
 };
 
 const createTodo = (type, title, date) => {
@@ -75,6 +75,12 @@ const removeTodo = (todo) => {
         renderTodos();
     }
 };
+
+const restoreTodo = (todo) => {
+    todos[todo.index].isTrash = false;
+    console.log(todos);
+    renderTodos();
+}
 
 const renderTodos = () => {
     const currentPage = document.querySelector('.project-title');
@@ -131,6 +137,7 @@ export {
     todos,
     createTodo,
     removeTodo,
+    restoreTodo,
     editTodo,
     updateStatus,
     renderTodos,
