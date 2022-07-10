@@ -40,7 +40,6 @@ const removeProject = (project, index) => {
         project.isTrash = true;
         buildGeneral();
     }
-    console.log(projects)
     renderProjectNav();
 };
 
