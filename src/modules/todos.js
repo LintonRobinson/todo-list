@@ -48,7 +48,6 @@ const todoFactory = (type, title, date, prio) => {
 const createTodo = (type, title, date, prio) => {
     const newTodo = todoFactory(type, title, date, prio);
     todos.push(newTodo);
-    console.log(todos)
     renderTodos();
 };
 
