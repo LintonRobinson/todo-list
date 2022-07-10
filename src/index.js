@@ -7,7 +7,7 @@ const navLinks = document.querySelectorAll('.header-main-nav-link');
 
 navBtn.addEventListener('click', () => {
     openProjectModal();
-})
+});
 
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
