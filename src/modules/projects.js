@@ -1,5 +1,5 @@
 import { buildGeneral, buildProjectPage } from "./build-pages";
-import { createNavItem } from "./create-dom-elements";
+import { createNavItem, createProjectCard } from "./create-dom-elements";
 
 const projects = [
     {
@@ -33,19 +33,26 @@ const createProject = (title, desc) => {
 const removeProject = (project, index) => {
     if (project.isTrash) {
         projects.splice(index, 1);
+        renderTrashProjects();
     } else {
         project.isTrash = true;
         buildGeneral();
     }
-    console.log(projects)
     renderProjectNav();
 };
+
+const restoreProject = (project) => {
+    project.isTrash = false;
+    renderTrashProjects();
+    renderProjectNav();
+}
 
 const renderProjectNav = () => {
     const projectNav = document.querySelector('#projects-list');
     projectNav.textContent = '';
 
     projects.forEach((project, index) => {
+        project.iD = index;
         if (project.isTrash === false) {
             const navItem = createNavItem('.header-nav-item', project.title);
             navItem.addEventListener('click', () => buildProjectPage(project, index));
@@ -54,8 +61,20 @@ const renderProjectNav = () => {
     });
 };
 
+const renderTrashProjects = () => {
+    const projectContainer = document.querySelector('.project-container');
+    projectContainer.textContent = '';
+    projects.forEach((project, index) => {
+        if (project.isTrash) {
+            createProjectCard(project, index);
+        };
+    });
+};
+
 export {
     createProject,
     removeProject,
+    restoreProject,
     renderProjectNav,
+    renderTrashProjects,
 };

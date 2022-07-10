@@ -1,6 +1,6 @@
 import { createBtn, createDiv, createH2, createPara, createTodoCard } from './create-dom-elements';
 import { openModal } from './modal';
-import { removeProject } from './projects';
+import { removeProject, renderTrashProjects } from './projects';
 import { renderTodos } from './todos';
 
 const buildGeneral = () => {
@@ -11,6 +11,7 @@ const buildGeneral = () => {
     const todoContainer = createDiv('todo-container');
     const btn = createBtn('todo-create');
 
+    mainContainer.setAttribute('data-id', 'General');
     title.innerText = 'General';
     desc.innerText = 'A general list of random todos.';
     btn.innerText = '+';
@@ -65,6 +66,7 @@ const buildTrash = () => {
     const todoContainer = createDiv('todo-container');
     const projectContainer = createDiv('project-container');
 
+    mainContainer.setAttribute('data-id', 'Trash');
     title.innerText = 'Trash';
     desc.innerText = 'All deleted todos and projects';
     projectContainer.innerText = 'Test';
@@ -74,6 +76,7 @@ const buildTrash = () => {
     main.textContent = '';
     main.append(mainContainer);
     renderTodos();
+    renderTrashProjects();
 }
 
 const buildProjectPage = (project, index) => {
@@ -85,6 +88,7 @@ const buildProjectPage = (project, index) => {
     const createTodoBtn = createBtn('todo-create');
     const delProjectBtn = createBtn('project-delete');
 
+    mainContainer.setAttribute('data-id', index);
     title.innerText = project.title;
     desc.innerText = project.desc;
     createTodoBtn.innerText = '+';

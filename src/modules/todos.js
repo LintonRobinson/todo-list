@@ -17,7 +17,7 @@ const todos = [
         isTrash: false,
     },
     {
-        type: 'Project-Title',
+        type: '0',
         checked: false,
         title: 'Todo-Title3',
         date: '2022-07-22',
@@ -79,9 +79,9 @@ const restoreTodo = (todo) => {
 }
 
 const renderTodos = () => {
-    const currentPage = document.querySelector('.project-title');
+    const currentPage = document.querySelector('.main-container').getAttribute('data-id');
     const todoContainer = document.querySelector('.todo-container');
-    const filteredTodos = filterTodos(currentPage.innerText);
+    const filteredTodos = filterTodos(currentPage);
     todoContainer.textContent = '';
     filteredTodos.forEach(todo => createTodoCard(todo));
 };
