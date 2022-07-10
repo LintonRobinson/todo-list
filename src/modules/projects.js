@@ -1,5 +1,6 @@
 import { buildGeneral, buildProjectPage } from "./build-pages";
 import { createNavItem, createProjectCard } from "./create-dom-elements";
+import { removeAllProjectTodos } from "./todos";
 
 const projects = [
     {
@@ -32,12 +33,14 @@ const createProject = (title, desc) => {
 
 const removeProject = (project, index) => {
     if (project.isTrash) {
+        removeAllProjectTodos(project);
         projects.splice(index, 1);
         renderTrashProjects();
     } else {
         project.isTrash = true;
         buildGeneral();
     }
+    console.log(projects)
     renderProjectNav();
 };
 

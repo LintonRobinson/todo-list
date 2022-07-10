@@ -70,13 +70,21 @@ const removeTodo = (todo) => {
     } else {
         todos[todo.index].isTrash = true;
         renderTodos();
-    }
+    };
+};
+
+const removeAllProjectTodos = (project) => {
+    todos.forEach((todo, index) => {
+        if (todo.type == project.iD) {
+            todos.splice(index, 1);
+        };
+    });
 };
 
 const restoreTodo = (todo) => {
     todos[todo.index].isTrash = false;
     renderTodos();
-}
+};
 
 const renderTodos = () => {
     const currentPage = document.querySelector('.main-container').getAttribute('data-id');
@@ -106,7 +114,7 @@ const filterTodos = (currentPage) => {
         return compareAsc(new Date(a.date), new Date(b.date));
     });
     return filteredTodos;
-}
+};
 
 const getDates = () => {
     const dates = eachDayOfInterval({
@@ -116,12 +124,13 @@ const getDates = () => {
 
     dates.forEach((date, index) => dates.splice(index, 1, format(date, 'yyyy-MM-dd')));
     return dates;
-}
+};
 
 export {
     todos,
     createTodo,
     removeTodo,
+    removeAllProjectTodos,
     restoreTodo,
     editTodo,
     updateStatus,
