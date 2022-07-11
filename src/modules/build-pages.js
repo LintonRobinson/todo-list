@@ -1,4 +1,4 @@
-import { createBtn, createDiv, createH2, createPara, createTodoCard } from './create-dom-elements';
+import { createBtn, createDiv, createH2, createPara, createSvg } from './create-dom-elements';
 import { openModal } from './modal';
 import { removeProject, renderTrashProjects } from './projects';
 import { renderTodos } from './todos';
@@ -13,7 +13,7 @@ const buildGeneral = () => {
     mainContainer.setAttribute('data-id', 'General');
     title.innerText = 'General';
     desc.innerText = 'A general list of random todos.';
-    createTodoBtn.innerText = '+';
+    createTodoBtn.append(createSvg('plus'));
     createTodoBtn.addEventListener('click', () => openModal());
 
     mainContainer.textContent = '';
@@ -82,9 +82,9 @@ const buildProjectPage = (project, index) => {
     mainContainer.setAttribute('data-id', index);
     title.innerText = project.title;
     desc.innerText = project.desc;
-    createTodoBtn.innerText = '+';
+    createTodoBtn.append(createSvg('plus'));
     createTodoBtn.addEventListener('click', () => openModal());
-    delProjectBtn.innerText = 'X';
+    delProjectBtn.append(createSvg('delete'));
     delProjectBtn.addEventListener('click', () => removeProject(project, index));
 
     mainContainer.textContent = '';
