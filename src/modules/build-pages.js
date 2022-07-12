@@ -17,7 +17,7 @@ const buildGeneral = () => {
     createTodoBtn.addEventListener('click', () => openModal());
 
     mainContainer.textContent = '';
-    mainContainer.append(title, desc, todoContainer, createTodoBtn);
+    mainContainer.append(title, createTodoBtn, desc, todoContainer);
 
     renderTodos();
 }
@@ -90,7 +90,7 @@ const buildProjectPage = (project, index) => {
     delProjectBtn.addEventListener('click', () => removeProject(project, index));
 
     mainContainer.textContent = '';
-    mainContainer.append(title, desc, todoContainer, createTodoBtn, delProjectBtn);
+    mainContainer.append(title, createTodoBtn, delProjectBtn, desc, todoContainer);
 
     renderTodos();
 }
