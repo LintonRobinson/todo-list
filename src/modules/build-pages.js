@@ -1,4 +1,4 @@
-import { createBtn, createDiv, createH2, createPara, createSvg } from './create-dom-elements';
+import { createBtn, createDiv, createH2, createH3, createPara, createSvg } from './create-dom-elements';
 import { openModal } from './modal';
 import { removeProject, renderTrashProjects } from './projects';
 import { renderTodos } from './todos';
@@ -60,14 +60,17 @@ const buildTrash = () => {
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
     const projectContainer = createDiv('project-container');
+    const todoSubTitle = createH3('project-subtitle');
+    const projectSubTitle = createH3('project-subtitle');
 
     mainContainer.setAttribute('data-id', 'Trash');
     title.innerText = 'Trash';
     desc.innerText = 'All deleted todos and projects';
-    projectContainer.innerText = 'Test';
+    todoSubTitle.innerText = 'Todos';
+    projectSubTitle.innerText = 'Projects';
 
     mainContainer.textContent = '';
-    mainContainer.append(title, desc, todoContainer, projectContainer);
+    mainContainer.append(title, desc, todoSubTitle, todoContainer, projectSubTitle, projectContainer);
 
     renderTodos();
     renderTrashProjects();
