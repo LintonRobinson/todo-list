@@ -15,7 +15,7 @@ closeModal.addEventListener('click', () => {
 });
 
 const openModal = () => {
-    createTodoModalElements('Add new todo');
+    createTodoModalElements('Create New Todo');
     modalForm.addEventListener('submit', newTodoEvent);
     modal.classList.remove('display-none');
 }
@@ -36,7 +36,7 @@ const openEditModal = (todo) => {
 }
 
 const openProjectModal = () => {
-    createProjectModalElements('Create new Project');
+    createProjectModalElements('Create New Project');
     modalForm.addEventListener('submit', newProjectEvent);
     modal.classList.remove('display-none');
 }

@@ -153,8 +153,10 @@ const createTodoModalElements = (title) => {
     labelDate.innerText = 'Date';
     labelPrio.innerText = 'Important?';
 
+    labelPrio.append(inputPrio);
+
     formFieldset.textContent = '';
-    formFieldset.append(legend, labelName, inputName, labelDate, inputDate, labelPrio, inputPrio);
+    formFieldset.append(legend, labelName, inputName, labelDate, inputDate, labelPrio);
 }
 
 const createProjectModalElements = (title) => {
