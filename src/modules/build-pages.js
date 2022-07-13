@@ -1,11 +1,11 @@
-import { createBtn, createDiv, createH2, createH3, createPara, createSvg } from './create-dom-elements';
+import { createBtn, createDiv, createH1, createH3, createPara, createSvg } from './create-dom-elements';
 import { openModal } from './modal';
 import { removeProject, renderTrashProjects } from './projects';
 import { renderTodos } from './todos';
 
 const buildGeneral = () => {
     const mainContainer = document.querySelector('.main-container');
-    const title = createH2('project-title');
+    const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
     const createTodoBtn = createBtn('todo-create');
@@ -24,7 +24,7 @@ const buildGeneral = () => {
 
 const buildToday = () => {
     const mainContainer = document.querySelector('.main-container');
-    const title = createH2('project-title');
+    const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
 
@@ -40,7 +40,7 @@ const buildToday = () => {
 
 const buildUpcoming = () => {
     const mainContainer = document.querySelector('.main-container');
-    const title = createH2('project-title');
+    const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
 
@@ -56,7 +56,7 @@ const buildUpcoming = () => {
 
 const buildTrash = () => {
     const mainContainer = document.querySelector('.main-container');
-    const title = createH2('project-title');
+    const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
     const projectContainer = createDiv('project-container');
@@ -78,7 +78,7 @@ const buildTrash = () => {
 
 const buildProjectPage = (project, index) => {
     const mainContainer = document.querySelector('.main-container');
-    const title = createH2('project-title');
+    const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
     const createTodoBtn = createBtn('todo-create');
