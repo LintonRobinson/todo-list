@@ -37,6 +37,14 @@ const todos = [
         date: '2022-07-22',
         isTrash: true,
     },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
 ];
 
 const todoFactory = (type, title, date, prio) => {
