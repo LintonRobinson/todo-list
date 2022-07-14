@@ -68,24 +68,27 @@ const createTodoCard = (todo) => {
     const date = createPara('todo-card-date');
     const editBtn = createBtn('todo-card-edit');
     const deleteBtn = createBtn('todo-card-delete');
+    const btnContainer = createDiv('todo-btn-container');
 
     checkbox.checked = todo.checked;
     checkbox.addEventListener('click', () => updateStatus(todo.index, checkbox.checked));
     title.innerText = todo.title;
     date.innerText = format(new Date(todo.date), 'dd/MM/y');
+
     editBtn.append(createSvg('edit'));
     editBtn.addEventListener('click', () => openEditModal(todo));
     deleteBtn.append(createSvg('delete'));
     deleteBtn.addEventListener('click', () => removeTodo(todo));
-
-    container.append(checkbox, title, date, editBtn, deleteBtn);
+    btnContainer.append(editBtn, deleteBtn);
 
     if (todo.isTrash) {
         const restoreBtn = createBtn('todo-card-restore');
         restoreBtn.append(createSvg('restore'));
         restoreBtn.addEventListener('click', () => restoreTodo(todo));
-        container.insertBefore(restoreBtn, container.lastChild);
+        btnContainer.insertBefore(restoreBtn, btnContainer.lastChild);
     }
+
+    container.append(checkbox, title, date, btnContainer);
 
     todoContainer.append(container);
 };
@@ -96,14 +99,17 @@ const createProjectCard = (project, index) => {
     const title = createPara('project-card-title');
     const deleteBtn = createBtn('project-card-delete');
     const restoreBtn = createBtn('project-card-restore');
+    const btnContainer = createDiv('project-btn-container');
 
     title.innerText = project.title;
+
     deleteBtn.append(createSvg('delete'));
     deleteBtn.addEventListener('click', () => removeProject(project, index));
     restoreBtn.append(createSvg('restore'));
     restoreBtn.addEventListener('click', () => restoreProject(project));
+    btnContainer.append(deleteBtn, restoreBtn);
 
-    container.append(title, restoreBtn, deleteBtn);
+    container.append(title, btnContainer);
 
     projectContainer.append(container);
 }
