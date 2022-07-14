@@ -107,7 +107,7 @@ const createProjectCard = (project, index) => {
     deleteBtn.addEventListener('click', () => removeProject(project, index));
     restoreBtn.append(createSvg('restore'));
     restoreBtn.addEventListener('click', () => restoreProject(project));
-    btnContainer.append(deleteBtn, restoreBtn);
+    btnContainer.append(restoreBtn, deleteBtn);
 
     container.append(title, btnContainer);
 
