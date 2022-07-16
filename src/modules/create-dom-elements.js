@@ -52,7 +52,7 @@ const createNavItem = (className, projectName) => {
 
     li.classList.add(className);
     liLink.classList.add(`${className}-link`);
-    liLink.setAttribute('href', '#');
+    liLink.setAttribute('href', 'javascript:void(0);');
     liLink.append(createSvg('arrow'), projectName);
 
     li.append(liLink);
