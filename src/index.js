@@ -6,8 +6,6 @@ const navBtn = document.querySelector('.header-nav-btn');
 const navLinks = document.querySelectorAll('.header-main-nav-link');
 const mobileNavBtn = document.querySelector('.mobile-nav-btn');
 
-console.log(mobileNavBtn)
-
 navBtn.addEventListener('click', () => {
     openProjectModal();
 });
@@ -17,7 +15,7 @@ mobileNavBtn.addEventListener('click', () => {
     document.querySelector('.main-container').classList.toggle('is-active');
 });
 
-navLinks.forEach(link => {
+navLinks.forEach((link) => {
     link.addEventListener('click', () => {
         switch (link.innerText) {
             case 'General':
@@ -32,9 +30,9 @@ navLinks.forEach(link => {
             case 'Trash':
                 buildTrash();
                 break;
-        };
+        }
     });
 });
 
-renderProjectNav()
+renderProjectNav();
 buildGeneral();
