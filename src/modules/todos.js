@@ -1,5 +1,5 @@
 import { createTodoCard } from './create-dom-elements';
-import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns'
+import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
 
 const todos = [
     {
@@ -37,14 +37,14 @@ const todos = [
         date: '2022-07-22',
         isTrash: true,
     },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false, },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
 ];
 
 const todoFactory = (type, title, date, prio) => {
@@ -78,14 +78,14 @@ const removeTodo = (todo) => {
     } else {
         todos[todo.index].isTrash = true;
         renderTodos();
-    };
+    }
 };
 
 const removeAllProjectTodos = (project) => {
     todos.forEach((todo, index) => {
         if (todo.type == project.iD) {
             todos.splice(index, 1);
-        };
+        }
     });
 };
 
@@ -99,10 +99,11 @@ const renderTodos = () => {
     const todoContainer = document.querySelector('.todo-container');
     const filteredTodos = filterTodos(currentPage);
     todoContainer.textContent = '';
-    filteredTodos.forEach(todo => createTodoCard(todo));
+    filteredTodos.forEach((todo) => createTodoCard(todo));
 };
 
 const filterTodos = (currentPage) => {
+    const sortBtn = document.querySelector('.todo-sort');
     const filteredTodos = todos.filter((todo, index) => {
         todo.index = index;
         switch (currentPage) {
@@ -114,6 +115,9 @@ const filterTodos = (currentPage) => {
             case 'Trash':
                 return todo.isTrash === true;
             default:
+                if (sortBtn && sortBtn.innerText === 'Important') {
+                    return todo.type === currentPage && todo.isTrash === false && todo.checked === true;
+                }
                 return todo.type === currentPage && todo.isTrash === false;
         }
     });
@@ -127,20 +131,11 @@ const filterTodos = (currentPage) => {
 const getDates = () => {
     const dates = eachDayOfInterval({
         start: addDays(new Date(), 1),
-        end: addDays(new Date(), 7)
+        end: addDays(new Date(), 7),
     });
 
     dates.forEach((date, index) => dates.splice(index, 1, format(date, 'yyyy-MM-dd')));
     return dates;
 };
 
-export {
-    todos,
-    createTodo,
-    removeTodo,
-    removeAllProjectTodos,
-    restoreTodo,
-    editTodo,
-    updateStatus,
-    renderTodos,
-};
+export { todos, createTodo, removeTodo, removeAllProjectTodos, restoreTodo, editTodo, updateStatus, renderTodos };

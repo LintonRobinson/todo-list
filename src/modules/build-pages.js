@@ -10,6 +10,7 @@ const buildGeneral = () => {
     const todoContainer = createDiv('todo-container');
     const btnContainer = createDiv('project-controls');
     const createTodoBtn = createBtn('todo-create');
+    const sortBtn = createBtn('todo-sort');
 
     mainContainer.setAttribute('data-id', 'General');
     title.innerText = 'General';
@@ -17,7 +18,12 @@ const buildGeneral = () => {
 
     createTodoBtn.append(createSvg('plus'), 'Create Todo');
     createTodoBtn.addEventListener('click', () => openModal());
-    btnContainer.append(createTodoBtn);
+    sortBtn.innerText = 'All';
+    sortBtn.addEventListener('click', () => {
+        sortBtn.innerText === 'All' ? (sortBtn.innerText = 'Important') : (sortBtn.innerText = 'All');
+        renderTodos();
+    });
+    btnContainer.append(createTodoBtn, sortBtn);
 
     mainContainer.textContent = '';
     mainContainer.append(title, desc, btnContainer, todoContainer);
@@ -86,20 +92,28 @@ const buildProjectPage = (project, index) => {
     const todoContainer = createDiv('todo-container');
     const btnContainer = createDiv('project-controls');
     const createTodoBtn = createBtn('todo-create');
+    const sortBtn = createBtn('todo-sort');
     const delProjectBtn = createBtn('project-delete');
     const editProjectBtn = createBtn('project-delete');
 
     mainContainer.setAttribute('data-id', index);
+
     title.innerText = project.title;
     desc.innerText = project.desc;
 
     createTodoBtn.append(createSvg('plus'), 'Create Todo');
     createTodoBtn.addEventListener('click', () => openModal());
+    sortBtn.innerText = 'All';
+    sortBtn.addEventListener('click', () => {
+        sortBtn.innerText === 'All' ? (sortBtn.innerText = 'Important') : (sortBtn.innerText = 'All');
+        renderTodos();
+    });
+
     editProjectBtn.append(createSvg('delete'), 'Edit Project');
     editProjectBtn.addEventListener('click', () => openEditProjectModal(project));
     delProjectBtn.append(createSvg('delete'), 'Delete Project');
     delProjectBtn.addEventListener('click', () => removeProject(project, index));
-    btnContainer.append(createTodoBtn, editProjectBtn, delProjectBtn);
+    btnContainer.append(createTodoBtn, sortBtn, editProjectBtn, delProjectBtn);
 
     mainContainer.textContent = '';
     mainContainer.append(title, desc, btnContainer, todoContainer);
