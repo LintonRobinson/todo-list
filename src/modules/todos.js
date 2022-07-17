@@ -7,6 +7,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title',
         date: '2022-07-20',
+        prio: false,
         isTrash: false,
     },
     {
@@ -14,6 +15,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title2',
         date: '2022-07-21',
+        prio: false,
         isTrash: false,
     },
     {
@@ -21,6 +23,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title3',
         date: '2022-07-22',
+        prio: false,
         isTrash: false,
     },
     {
@@ -28,6 +31,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title4',
         date: '2022-07-22',
+        prio: true,
         isTrash: false,
     },
     {
@@ -35,16 +39,17 @@ const todos = [
         checked: false,
         title: 'Trash-Todo',
         date: '2022-07-22',
+        prio: false,
         isTrash: true,
     },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
 ];
 
 const todoFactory = (type, title, date, prio) => {
@@ -116,7 +121,7 @@ const filterTodos = (currentPage) => {
                 return todo.isTrash === true;
             default:
                 if (sortBtn && sortBtn.innerText === 'Important') {
-                    return todo.type === currentPage && todo.isTrash === false && todo.checked === true;
+                    return todo.type === currentPage && todo.isTrash === false && todo.prio === true;
                 }
                 return todo.type === currentPage && todo.isTrash === false;
         }
