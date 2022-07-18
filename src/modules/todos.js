@@ -7,7 +7,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title',
         date: '2022-07-20',
-        prio: false,
+        isImportant: true,
         isTrash: false,
     },
     {
@@ -15,7 +15,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title2',
         date: '2022-07-21',
-        prio: false,
+        isImportant: false,
         isTrash: false,
     },
     {
@@ -23,7 +23,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title3',
         date: '2022-07-22',
-        prio: false,
+        isImportant: false,
         isTrash: false,
     },
     {
@@ -31,7 +31,7 @@ const todos = [
         checked: false,
         title: 'Todo-Title4',
         date: '2022-07-22',
-        prio: true,
+        isImportant: true,
         isTrash: false,
     },
     {
@@ -39,36 +39,36 @@ const todos = [
         checked: false,
         title: 'Trash-Todo',
         date: '2022-07-22',
-        prio: false,
+        isImportant: false,
         isTrash: true,
     },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', prio: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
 ];
 
-const todoFactory = (type, title, date, prio) => {
+const todoFactory = (type, title, date, isImportant) => {
     const checked = false;
     const isTrash = false;
-    return { type, checked, title, date, prio, isTrash };
+    return { type, checked, title, date, isImportant, isTrash };
 };
 
-const createTodo = (type, title, date, prio) => {
-    const newTodo = todoFactory(type, title, date, prio);
+const createTodo = (type, title, date, isImportant) => {
+    const newTodo = todoFactory(type, title, date, isImportant);
     todos.push(newTodo);
     renderTodos();
 };
 
-const editTodo = (index, title, date, prio) => {
+const editTodo = (index, title, date, isImportant) => {
     const currentTodo = todos[index];
     currentTodo.title = title;
     currentTodo.date = date;
-    currentTodo.prio = prio;
+    currentTodo.isImportant = isImportant;
     renderTodos();
 };
 
@@ -129,7 +129,7 @@ const filterTodos = (currentPage) => {
                     return (
                         todo.type === currentPage &&
                         todo.isTrash === false &&
-                        todo.prio === true &&
+                        todo.isImportant === true &&
                         todo.checked === false
                     );
                 }
