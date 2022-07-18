@@ -23,7 +23,7 @@ const buildGeneral = () => {
         sortBtn.innerText === 'All' ? (sortBtn.innerText = 'Important') : (sortBtn.innerText = 'All');
         renderTodos();
     });
-    btnContainer.append(createTodoBtn, sortBtn);
+    btnContainer.append(sortBtn, createTodoBtn);
 
     mainContainer.textContent = '';
     mainContainer.append(title, desc, btnContainer, todoContainer);
@@ -89,12 +89,13 @@ const buildProjectPage = (project, index) => {
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
+    const titleContainer = createDiv('project-title-container');
     const todoContainer = createDiv('todo-container');
     const btnContainer = createDiv('project-controls');
     const createTodoBtn = createBtn('todo-create');
     const sortBtn = createBtn('todo-sort');
     const delProjectBtn = createBtn('project-delete');
-    const editProjectBtn = createBtn('project-delete');
+    const editProjectBtn = createBtn('project-edit');
 
     mainContainer.setAttribute('data-id', index);
 
@@ -109,14 +110,16 @@ const buildProjectPage = (project, index) => {
         renderTodos();
     });
 
-    editProjectBtn.append(createSvg('delete'), 'Edit Project');
+    editProjectBtn.append(createSvg('edit'));
     editProjectBtn.addEventListener('click', () => openEditProjectModal(project));
-    delProjectBtn.append(createSvg('delete'), 'Delete Project');
+    delProjectBtn.append(createSvg('delete'));
     delProjectBtn.addEventListener('click', () => removeProject(project, index));
-    btnContainer.append(createTodoBtn, sortBtn, editProjectBtn, delProjectBtn);
+    btnContainer.append(sortBtn, createTodoBtn);
+
+    titleContainer.append(title, editProjectBtn, delProjectBtn);
 
     mainContainer.textContent = '';
-    mainContainer.append(title, desc, btnContainer, todoContainer);
+    mainContainer.append(titleContainer, desc, btnContainer, todoContainer);
 
     renderTodos();
 };
