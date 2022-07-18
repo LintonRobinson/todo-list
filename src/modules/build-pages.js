@@ -77,7 +77,6 @@ const buildCompleted = () => {
     mainContainer.append(title, desc, todoContainer);
 
     renderTodos();
-    renderTrashProjects();
 };
 
 const buildTrash = () => {

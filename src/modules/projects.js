@@ -90,4 +90,4 @@ const renderTrashProjects = () => {
     });
 };
 
-export { createProject, editProject, removeProject, restoreProject, renderProjectNav, renderTrashProjects };
+export { projects, createProject, editProject, removeProject, restoreProject, renderProjectNav, renderTrashProjects };

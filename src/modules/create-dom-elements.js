@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { openEditModal } from './modal';
-import { removeProject, restoreProject } from './projects';
+import { projects, removeProject, restoreProject } from './projects';
 import { removeTodo, restoreTodo, updateStatus } from './todos';
 
 const createDiv = (className) => {
@@ -61,6 +61,7 @@ const createNavItem = (className, projectName) => {
 };
 
 const createTodoCard = (todo) => {
+    const currentPage = document.querySelector('.main-container').getAttribute('data-id');
     const todoContainer = document.querySelector('.todo-container');
     const container = createDiv('todo-card');
     const checkbox = createCheckbox('todo-card-input');
@@ -92,6 +93,21 @@ const createTodoCard = (todo) => {
         restoreBtn.append(createSvg('restore'));
         restoreBtn.addEventListener('click', () => restoreTodo(todo));
         btnContainer.insertBefore(restoreBtn, btnContainer.lastChild);
+    }
+
+    if (
+        currentPage === 'Today' ||
+        currentPage === 'Upcoming' ||
+        currentPage === 'Completed' ||
+        currentPage === 'Trash'
+    ) {
+        const type = createPara('todo-card-type');
+        if (isNaN(todo.type)) {
+            type.innerText = todo.type;
+        } else {
+            type.innerText = projects[parseInt(todo.type)].title;
+        }
+        container.append(type);
     }
 
     container.append(checkbox, title, date, btnContainer);
