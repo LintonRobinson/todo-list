@@ -74,7 +74,7 @@ const editTodo = (index, title, date, prio) => {
 
 const updateStatus = (index, value) => {
     todos[index].checked = value;
-    renderTodos();
+    setTimeout(renderTodos, 2000);
 };
 
 const removeTodo = (todo) => {
