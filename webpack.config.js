@@ -1,10 +1,32 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  devtool: 'inline-source-map',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+    entry: {
+        main: path.resolve(__dirname, './src/index.js'),
+    },
+    devtool: 'inline-source-map',
+    output: {
+        filename: '[name].[contenthash].js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+        ],
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Todo-List',
+            filename: 'index.html',
+            template: path.resolve(__dirname, 'src/template.html'),
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+        }),
+    ],
 };

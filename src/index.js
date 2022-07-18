@@ -1,6 +1,10 @@
 import { buildGeneral, buildToday, buildCompleted, buildTrash, buildUpcoming } from './modules/build-pages.js';
 import { openProjectModal } from './modules/modal.js';
 import { renderProjectNav } from './modules/projects.js';
+import 'simplebar';
+import 'simplebar/dist/simplebar.css';
+import './reset.css';
+import './styles.css';
 
 const navBtn = document.querySelector('.header-nav-btn');
 const navLinks = document.querySelectorAll('.header-main-nav-link');
