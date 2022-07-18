@@ -1,4 +1,4 @@
-import { buildGeneral, buildToday, buildTrash, buildUpcoming } from './modules/build-pages.js';
+import { buildGeneral, buildToday, buildCompleted, buildTrash, buildUpcoming } from './modules/build-pages.js';
 import { openProjectModal } from './modules/modal.js';
 import { renderProjectNav } from './modules/projects.js';
 
@@ -26,6 +26,9 @@ navLinks.forEach((link) => {
                 break;
             case 'Upcoming':
                 buildUpcoming();
+                break;
+            case 'Completed':
+                buildCompleted();
                 break;
             case 'Trash':
                 buildTrash();
