@@ -1,56 +1,62 @@
 import { createTodoCard } from './create-dom-elements';
 import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
 
-const todos = [
-    {
-        type: 'General',
-        checked: false,
-        title: 'Todo-Title',
-        date: '2022-07-20',
-        isImportant: true,
-        isTrash: false,
-    },
-    {
-        type: 'General',
-        checked: false,
-        title: 'Todo-Title2',
-        date: '2022-07-21',
-        isImportant: false,
-        isTrash: false,
-    },
-    {
-        type: '0',
-        checked: false,
-        title: 'Todo-Title3',
-        date: '2022-07-22',
-        isImportant: false,
-        isTrash: false,
-    },
-    {
-        type: 'General',
-        checked: false,
-        title: 'Todo-Title4',
-        date: '2022-07-22',
-        isImportant: true,
-        isTrash: false,
-    },
-    {
-        type: 'General',
-        checked: false,
-        title: 'Trash-Todo',
-        date: '2022-07-22',
-        isImportant: false,
-        isTrash: true,
-    },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-    { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
-];
+const LOCAL_STORAGE_TODO_KEY = 'todolist.todos';
+const todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_KEY)) || [];
+// const todos = [
+//     {
+//         type: 'General',
+//         checked: false,
+//         title: 'Todo-Title',
+//         date: '2022-07-20',
+//         isImportant: true,
+//         isTrash: false,
+//     },
+//     {
+//         type: 'General',
+//         checked: false,
+//         title: 'Todo-Title2',
+//         date: '2022-07-21',
+//         isImportant: false,
+//         isTrash: false,
+//     },
+//     {
+//         type: '0',
+//         checked: false,
+//         title: 'Todo-Title3',
+//         date: '2022-07-22',
+//         isImportant: false,
+//         isTrash: false,
+//     },
+//     {
+//         type: 'General',
+//         checked: false,
+//         title: 'Todo-Title4',
+//         date: '2022-07-22',
+//         isImportant: true,
+//         isTrash: false,
+//     },
+//     {
+//         type: 'General',
+//         checked: false,
+//         title: 'Trash-Todo',
+//         date: '2022-07-22',
+//         isImportant: false,
+//         isTrash: true,
+//     },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+//     { type: 'General', checked: false, title: 'Todo-Title', date: '2022-07-20', isImportant: false, isTrash: false },
+// ];
+
+const saveTodos = () => {
+    localStorage.setItem(LOCAL_STORAGE_TODO_KEY, JSON.stringify(todos));
+};
 
 const todoFactory = (type, title, date, isImportant) => {
     const checked = false;
@@ -106,6 +112,7 @@ const renderTodos = () => {
     const filteredTodos = filterTodos(currentPage);
     todoContainer.textContent = '';
     filteredTodos.forEach((todo) => createTodoCard(todo));
+    saveTodos();
 };
 
 const filterTodos = (currentPage) => {
