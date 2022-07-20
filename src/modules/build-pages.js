@@ -4,6 +4,7 @@ import { removeProject, renderTrashProjects } from './projects';
 import { renderTodos } from './todos';
 
 const buildGeneral = () => {
+    const nav = document.querySelector('.header');
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
@@ -12,7 +13,10 @@ const buildGeneral = () => {
     const createTodoBtn = createBtn('todo-create');
     const sortBtn = createBtn('todo-sort');
 
+    nav.classList.remove('is-active');
+    mainContainer.classList.remove('is-active');
     mainContainer.setAttribute('data-id', 'General');
+
     title.innerText = 'General';
     desc.innerText = 'A general list of todos';
 
@@ -32,12 +36,16 @@ const buildGeneral = () => {
 };
 
 const buildToday = () => {
+    const nav = document.querySelector('.header');
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
 
+    nav.classList.remove('is-active');
+    mainContainer.classList.remove('is-active');
     mainContainer.setAttribute('data-id', 'Today');
+
     title.innerText = 'Today';
     desc.innerText = 'All todos dated today';
 
@@ -48,12 +56,16 @@ const buildToday = () => {
 };
 
 const buildUpcoming = () => {
+    const nav = document.querySelector('.header');
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
 
+    nav.classList.remove('is-active');
+    mainContainer.classList.remove('is-active');
     mainContainer.setAttribute('data-id', 'Upcoming');
+
     title.innerText = 'Upcoming';
     desc.innerText = 'All upcoming todos in the next week';
 
@@ -64,12 +76,16 @@ const buildUpcoming = () => {
 };
 
 const buildCompleted = () => {
+    const nav = document.querySelector('.header');
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
     const todoContainer = createDiv('todo-container');
 
+    nav.classList.remove('is-active');
+    mainContainer.classList.remove('is-active');
     mainContainer.setAttribute('data-id', 'Completed');
+
     title.innerText = 'Completed';
     desc.innerText = 'All completed todos';
 
@@ -80,6 +96,7 @@ const buildCompleted = () => {
 };
 
 const buildTrash = () => {
+    const nav = document.querySelector('.header');
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
@@ -87,7 +104,10 @@ const buildTrash = () => {
     const projectContainer = createDiv('project-container');
     const typeProjectBtn = createBtn('project-type');
 
+    nav.classList.remove('is-active');
+    mainContainer.classList.remove('is-active');
     mainContainer.setAttribute('data-id', 'Trash');
+
     title.innerText = 'Trash';
     desc.innerText = 'All deleted todos and projects';
 
@@ -115,6 +135,7 @@ const buildTrash = () => {
 };
 
 const buildProjectPage = (project, index) => {
+    const nav = document.querySelector('.header');
     const mainContainer = document.querySelector('.main-container');
     const title = createH1('project-title');
     const desc = createPara('project-desc');
@@ -126,6 +147,8 @@ const buildProjectPage = (project, index) => {
     const delProjectBtn = createBtn('project-delete');
     const editProjectBtn = createBtn('project-edit');
 
+    nav.classList.remove('is-active');
+    mainContainer.classList.remove('is-active');
     mainContainer.setAttribute('data-id', index);
 
     title.innerText = project.title;
