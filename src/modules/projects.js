@@ -44,6 +44,7 @@ const createProject = (title, desc) => {
     const newProject = projectFactory(title, desc);
     projects.push(newProject);
     renderProjectNav();
+    buildProjectPage(projects[projects.length - 1], projects[projects.length - 1].iD);
 };
 
 const editProject = (project, title, desc) => {
