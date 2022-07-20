@@ -382,11 +382,19 @@ body {
     }
 
     .main-container {
+        position: relative;
         height: calc(100vh - 100px);
     }
 
     .main-container.is-active {
         transform: translateX(250px);
+    }
+
+    .main-container.is-active::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--clr-bg-accent);
     }
 }
 
