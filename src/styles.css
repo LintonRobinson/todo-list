@@ -340,10 +340,14 @@ body {
     justify-self: center;
     font-size: var(--fs-300);
     font-weight: var(--fw-700);
-    pointer-events: none;
     background-color: var(--clr-btn-primary);
+    cursor: default;
     padding: 0 1rem;
     border-radius: 0 0 1rem 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 50%;
+    white-space: pre;
 }
 
 .todo-card-input {
