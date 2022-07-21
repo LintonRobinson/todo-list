@@ -14,6 +14,8 @@
     --font-clr-secondary: hsl(0 0% 0% / 1);
 
     --clr-bg-accent: hsl(0 0% 100% / 0.5);
+    --clr-bg-secondary: hsl(0 0% 100% / 0.1);
+    --clr-bg-secondary-xl: hsl(0 0% 100% / 0.3);
     --clr-bg-primary: linear-gradient(
         to right top,
         #d16ba5,
@@ -37,7 +39,7 @@
 
     --clr-important: hsl(0 100% 50% / 0.4);
 
-    --shadow-primary: 0 0 15px hsl(0 0% 0% / 0.25);
+    --shadow-primary: 0 0 10px hsl(0 0% 0% / 0.2);
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -77,7 +79,7 @@ body {
     grid-template-columns: max-content 1fr;
     grid-template-rows: 100%;
     grid-template-areas: 'nav main';
-    background-color: var(--clr-bg-accent);
+    background-color: var(--clr-bg-secondary);
     overflow: hidden;
 }
 
@@ -89,6 +91,7 @@ body {
         max-height: 800px;
         border-radius: 2rem;
         box-shadow: var(--shadow-primary);
+        background-color: var(--clr-bg-secondary-xl);
     }
 }
 
@@ -172,6 +175,7 @@ body {
     border: none;
     border-radius: 100vmax;
     cursor: pointer;
+    line-height: 1;
 }
 
 .header-nav-btn:hover {
@@ -183,13 +187,14 @@ body {
     .header {
         position: fixed;
         top: 100px;
+        left: -250px;
         bottom: 0;
         z-index: 10;
-        transform: translateX(-250px);
+        transition: transform 250ms ease-in;
     }
 
     .header.is-active {
-        transform: translateX(0px);
+        transform: translateX(250px);
     }
 
     .header-title {
@@ -248,6 +253,7 @@ body {
     border-radius: 100vmax;
     background: var(--clr-bg-accent);
     cursor: pointer;
+    line-height: 1;
 }
 
 .project-title-container > button:hover {
@@ -271,6 +277,7 @@ body {
     border-radius: 100vmax;
     background: var(--clr-bg-accent);
     cursor: pointer;
+    line-height: 1;
 }
 
 .project-type:hover,
@@ -361,6 +368,7 @@ body {
     background: none;
     height: 24px;
     cursor: pointer;
+    line-height: 1;
 }
 
 .todo-btn-container > button:hover,
@@ -384,6 +392,15 @@ body {
     .main-container {
         position: relative;
         height: calc(100vh - 100px);
+        transition: transform 250ms ease-in;
+    }
+
+    .main-container::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: hsl(0 0% 0% / 0);
+        transition: background-color 250ms ease-in;
     }
 
     .main-container.is-active {
@@ -391,9 +408,6 @@ body {
     }
 
     .main-container.is-active::after {
-        content: '';
-        position: absolute;
-        inset: 0;
         background-color: var(--clr-bg-accent);
     }
 }
@@ -493,6 +507,8 @@ body {
     background-color: var(--clr-btn-primary);
     cursor: pointer;
     font-weight: var(--fw-700);
+    padding: 0.5rem 0;
+    line-height: 1;
 }
 
 .modal-form-submit:hover {
