@@ -306,7 +306,6 @@ body {
 .project-card {
     position: relative;
     display: grid;
-    align-items: center;
     grid-template-columns: max-content 1fr max-content;
     grid-auto-flow: column;
     grid-auto-columns: max-content;
@@ -367,7 +366,10 @@ body {
 }
 
 .todo-card-date.is-expired {
-    padding: 0.3rem 1rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 24px;
     border-radius: 100vmax;
     font-weight: var(--fw-700);
     background-color: var(--clr-important);

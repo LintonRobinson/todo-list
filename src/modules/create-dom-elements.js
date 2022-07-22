@@ -188,6 +188,10 @@ const createTodoModalElements = (title) => {
     labelDate.innerText = 'Date';
     labelPrio.innerText = 'Important?';
 
+    inputName.setAttribute('required', '');
+    inputName.setAttribute('maxlength', '150');
+    inputDate.setAttribute('required', '');
+
     labelPrio.append(inputPrio);
 
     formFieldset.textContent = '';
@@ -205,6 +209,10 @@ const createProjectModalElements = (title) => {
     legend.innerText = title;
     labelName.innerText = 'Project Name';
     labelDesc.innerText = 'Project Description';
+
+    inputName.setAttribute('required', '');
+    inputName.setAttribute('maxlength', '50');
+    inputDesc.setAttribute('maxlength', '250');
 
     formFieldset.textContent = '';
     formFieldset.append(legend, labelName, inputName, labelDesc, inputDesc);
