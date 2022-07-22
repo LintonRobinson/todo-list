@@ -238,7 +238,6 @@ body {
 .project-title-container {
     display: grid;
     grid-template-columns: 1fr max-content max-content;
-    align-items: center;
     gap: 1rem;
     word-break: break-word;
 }
@@ -254,7 +253,7 @@ body {
 .project-title-container > button {
     display: flex;
     place-items: center;
-    justify-self: flex-end;
+    aspect-ratio: 1;
     padding: 0.3rem;
     border: none;
     border-radius: 100vmax;
@@ -422,8 +421,22 @@ body {
     }
 }
 
-/* Media query for todo card layout at small screens */
+/* Media query for title container and todo card layout at small screens */
 @media screen and (max-width: 550px) {
+    .project-title-container {
+        grid-template-columns: 1fr max-content;
+    }
+
+    .project-title {
+        font-size: clamp(1.375rem, 0.7269rem + 3.7037vw, 2rem);
+        grid-row: span 3;
+    }
+
+    .project-delete {
+        grid-row: 1;
+        grid-column: 2 / 3;
+    }
+
     .todo-card {
         grid-auto-flow: unset;
     }
