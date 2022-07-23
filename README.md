@@ -29,12 +29,12 @@ This is a todo list application created as part of [TheOdinProject](https://www.
 
 #### JavaScript Libraries
 
-[date-fns](https://date-fns.org/)
+-   [date-fns](https://date-fns.org/)
 
 #### Icons
 
-[Google Material Icons](https://fonts.google.com/icons?icon.set=Material+Icons)
-[Microsoft Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons)
+-   [Google Material Icons](https://fonts.google.com/icons?icon.set=Material+Icons)
+-   [Microsoft Fluent UI System Icons](https://github.com/microsoft/fluentui-system-icons)
 
 ## Gallery
 
