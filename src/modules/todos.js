@@ -1,5 +1,6 @@
 import { createTodoCard } from './create-dom-elements';
 import { format, compareAsc, addDays, eachDayOfInterval } from 'date-fns';
+import { projects, restoreProject } from './projects';
 
 const LOCAL_STORAGE_TODO_KEY = 'todolist.todos';
 const todos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TODO_KEY)) || [
@@ -124,15 +125,25 @@ const removeTodo = (todo) => {
     }
 };
 
-const removeAllProjectTodos = (project) => {
-    todos.forEach((todo, index) => {
-        if (todo.type == project.iD) {
-            todos.splice(index, 1);
-        }
+const updateAllProjectTodos = (project) => {
+    todos.forEach((todo) => {
+        if (todo.type == project.iD) todo.isTrash = true;
     });
 };
 
+const removeAllProjectTodos = (project) => {
+    let i = todos.length;
+    while (i--) {
+        const todo = todos[i];
+        if (todo.type == project.iD) {
+            todos.splice(todo.index, 1);
+        }
+    }
+    renderTodos();
+};
+
 const restoreTodo = (todo) => {
+    if (typeof parseInt(todo.type) === 'number') restoreProject(projects[parseInt(todo.type)]);
     todos[todo.index].isTrash = false;
     renderTodos();
 };
@@ -191,4 +202,14 @@ const getDates = () => {
     return dates;
 };
 
-export { todos, createTodo, removeTodo, removeAllProjectTodos, restoreTodo, editTodo, updateStatus, renderTodos };
+export {
+    todos,
+    createTodo,
+    removeTodo,
+    updateAllProjectTodos,
+    removeAllProjectTodos,
+    restoreTodo,
+    editTodo,
+    updateStatus,
+    renderTodos,
+};

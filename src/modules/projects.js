@@ -1,6 +1,6 @@
 import { buildGeneral, buildProjectPage } from './build-pages';
 import { createNavItem, createProjectCard } from './create-dom-elements';
-import { removeAllProjectTodos } from './todos';
+import { removeAllProjectTodos, updateAllProjectTodos } from './todos';
 
 const LOCAL_STORAGE_PROJECTS_KEY = 'todolist.projects';
 const projects = JSON.parse(localStorage.getItem(LOCAL_STORAGE_PROJECTS_KEY)) || [
@@ -21,6 +21,7 @@ const projectFactory = (title, desc) => {
 };
 
 const createProject = (title, desc) => {
+    console.log(projects);
     const newProject = projectFactory(title, desc);
     projects.push(newProject);
     renderProjectNav();
@@ -36,11 +37,13 @@ const editProject = (project, title, desc) => {
 };
 
 const removeProject = (project, index) => {
+    console.log(project, index);
     if (project.isTrash) {
         removeAllProjectTodos(project);
         projects.splice(index, 1);
         renderTrashProjects();
     } else {
+        updateAllProjectTodos(project);
         project.isTrash = true;
         renderProjectNav();
         buildGeneral();
