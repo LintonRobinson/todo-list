@@ -16,14 +16,14 @@
 
 This is a todo list application created as part of [TheOdinProject](https://www.theodinproject.com) curriculum.
 
-[Click Here](https://www.theodinproject.com/lessons/node-path-javascript-todo-list) - To see the assignment details.
+To see the assignment details - [Click Here](https://www.theodinproject.com/lessons/node-path-javascript-todo-list)
 
 ## Built Using
 
--   HTML5
--   Custom CSS3
--   Vanilla JavaScript
--   Webpack
+-   HTML5 <img src="./readme-assets/html5.svg">
+-   CSS3 <img src="./readme-assets/css3.svg">
+-   JavaScript <img src="./readme-assets/javascript.svg">
+-   Webpack <img src="./readme-assets/webpack.svg">
 
 ## Credits
 
